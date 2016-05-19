@@ -32,13 +32,7 @@ public class Main extends Application {
 
         initGame();
 
-        leftButton.setOnAction(event ->{
-        });
 
-        rightButton.setOnAction(event -> {
-            dungeon();
-
-        });
         primaryStage.show();
     }
 
@@ -112,11 +106,11 @@ public class Main extends Application {
 
                         rightButton.setOnAction(event3 -> {
                             haveKey = false;
-                            dungeon();
+                            initGame();
                         });
                         leftButton.setOnAction(event3 -> {
                             haveKey = false;
-                            dungeon();
+                            initGame();
                         });
                     });
 
@@ -142,10 +136,10 @@ public class Main extends Application {
                                     setLeftButton("This game is very poorly made. You get 1 star on yelp.");
 
                                     leftButton.setOnAction(event6 -> {
-                                        dungeon();
+                                        initGame();
                                     });
                                     rightButton.setOnAction(event6 -> {
-                                        dungeon();
+                                        initGame();
                                     });
                                 });
 
@@ -156,7 +150,7 @@ public class Main extends Application {
                                     setLeftButton("Go through door anyways");
 
                                     rightButton.setOnAction(event6 -> {
-                                        setLabel("Spikes fall from the cieling. Killing you instantly. GG");
+                                        setLabel("Spikes fall from the ceiling. Killing you instantly. GG");
 
                                         setRightButton("Is there even a way to win this game?");
                                         setLeftButton("No");
@@ -167,6 +161,13 @@ public class Main extends Application {
 
                                         setRightButton("back to start");
                                         setLeftButton("feels bad");
+
+                                        rightButton.setOnAction(event7 -> {
+                                            initGame();
+                                        });
+                                        leftButton.setOnAction(event7 -> {
+                                            initGame();
+                                        });
                                     });
                                 });
 
@@ -177,12 +178,12 @@ public class Main extends Application {
                                 setLeftButton("You should totally get an A on this. This is very well done. Bravo.");
 
                                 rightButton.setOnAction(event5 -> {
-                                    dungeon();
+                                    initGame();
                                     haveKey = false;
                                 });
 
                                 leftButton.setOnAction(event5 -> {
-                                    dungeon();
+                                    initGame();
                                     haveKey = false;
                                 });
                             });
@@ -192,6 +193,13 @@ public class Main extends Application {
                             setLabel("I literally have no idea what a gauntlet is, I just hear people talk about it for games like this. Um you die? Feels bad");
                             setRightButton("Im sorry");
                             setLeftButton("This was literally made in one day");
+
+                            rightButton.setOnAction(event4 -> {
+                                initGame();
+                            });
+                            leftButton.setOnAction(event4 -> {
+                                initGame();
+                            });
                         });
                     });
                 }
@@ -239,6 +247,17 @@ public class Main extends Application {
         grid.add(hbButtons, 0, 2, 2, 1);
         grid.setAlignment(Pos.CENTER);
 
+        setLabel("New Game?");
+        setRightButton("Exit");
+        setLeftButton("Start");
+
+        leftButton.setOnAction(event ->{
+            dungeon();
+        });
+
+        rightButton.setOnAction(event -> {
+            System.exit(0);
+        });
     }
 
     public static void main(String[] args) {
