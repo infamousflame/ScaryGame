@@ -29,10 +29,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setScene(scene);
-
         initGame();
-
-
+        start();
         primaryStage.show();
     }
 
@@ -106,11 +104,11 @@ public class Main extends Application {
 
                         rightButton.setOnAction(event3 -> {
                             haveKey = false;
-                            initGame();
+                            start();
                         });
                         leftButton.setOnAction(event3 -> {
                             haveKey = false;
-                            initGame();
+                            start();
                         });
                     });
 
@@ -154,6 +152,13 @@ public class Main extends Application {
 
                                         setRightButton("Is there even a way to win this game?");
                                         setLeftButton("No");
+
+                                        leftButton.setOnAction(event7 -> {
+                                            start();
+                                        });
+                                        rightButton.setOnAction(event7 -> {
+                                            start();
+                                        });
                                     });
 
                                     leftButton.setOnAction(event6 -> {
@@ -163,10 +168,10 @@ public class Main extends Application {
                                         setLeftButton("feels bad");
 
                                         rightButton.setOnAction(event7 -> {
-                                            initGame();
+                                            start();
                                         });
                                         leftButton.setOnAction(event7 -> {
-                                            initGame();
+                                            start();
                                         });
                                     });
                                 });
@@ -178,12 +183,12 @@ public class Main extends Application {
                                 setLeftButton("You should totally get an A on this. This is very well done. Bravo.");
 
                                 rightButton.setOnAction(event5 -> {
-                                    initGame();
+                                    start();
                                     haveKey = false;
                                 });
 
                                 leftButton.setOnAction(event5 -> {
-                                    initGame();
+                                    start();
                                     haveKey = false;
                                 });
                             });
@@ -195,10 +200,10 @@ public class Main extends Application {
                             setLeftButton("This was literally made in one day");
 
                             rightButton.setOnAction(event4 -> {
-                                initGame();
+                                start();
                             });
                             leftButton.setOnAction(event4 -> {
-                                initGame();
+                                start();
                             });
                         });
                     });
@@ -247,9 +252,15 @@ public class Main extends Application {
         grid.add(hbButtons, 0, 2, 2, 1);
         grid.setAlignment(Pos.CENTER);
 
+
+    }
+
+    void start() {
         setLabel("New Game?");
         setRightButton("Exit");
         setLeftButton("Start");
+
+        haveKey = false;
 
         leftButton.setOnAction(event ->{
             dungeon();
@@ -259,7 +270,6 @@ public class Main extends Application {
             System.exit(0);
         });
     }
-
     public static void main(String[] args) {
         launch(args);
     }
