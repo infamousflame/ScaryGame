@@ -122,16 +122,83 @@ public class Main extends Application {
 
                     leftButton.setOnAction(event2 -> {
                         setLabel("You sneak past him and through an open door. You rush in and shut the door behind you. You look up and see two skelly bellies charging you.");
-                        setRightButton("Grab sword of table");
-                        setRightButton("Grab magic gauntlet");
+                        setRightButton("Grab sword off table");
+                        setLeftButton("Grab magic gauntlet off table");
 
+                        rightButton.setOnAction(event3 -> {
+                            setLabel("Oh dang my dude, you gg wreck the skelly bellies. Feels dank man. There is a door at the end of the room. What do you do?");
+                            setLeftButton("loot bodies");
+                            setRightButton("leave room");
 
+                            leftButton.setOnAction(event4 -> {
+                                setLabel("Do you really want to grope them after you just killed them?");
+
+                                setRightButton("yes");
+                                setLeftButton("no");
+
+                                rightButton.setOnAction(event5 -> {
+                                    setLabel("You lose this one");
+                                    setRightButton("feels bad");
+                                    setLeftButton("This game is very poorly made. You get 1 star on yelp.");
+
+                                    leftButton.setOnAction(event6 -> {
+                                        dungeon();
+                                    });
+                                    rightButton.setOnAction(event6 -> {
+                                        dungeon();
+                                    });
+                                });
+
+                                leftButton.setOnAction(event5 -> {
+                                    setLabel("That's what I thought. Oh wait, the door has some spooky spikes. But there is a lever on the wall");
+
+                                    setRightButton("Pull lever");
+                                    setLeftButton("Go through door anyways");
+
+                                    rightButton.setOnAction(event6 -> {
+                                        setLabel("Spikes fall from the cieling. Killing you instantly. GG");
+
+                                        setRightButton("Is there even a way to win this game?");
+                                        setLeftButton("No");
+                                    });
+
+                                    leftButton.setOnAction(event6 -> {
+                                        setLabel("You actually walk into the spikes and die. Your reasoning skills omg. Got me tilted atm.");
+
+                                        setRightButton("back to start");
+                                        setLeftButton("feels bad");
+                                    });
+                                });
+
+                            });
+                            rightButton.setOnAction(event4 -> {
+                                setLabel("You enter the room and die immediately, that's it. That's all this game is. You die. There is no other story to it. Dont try and look for more story.");
+                                setRightButton("OK?");
+                                setLeftButton("You should totally get an A on this. This is very well done. Bravo.");
+
+                                rightButton.setOnAction(event5 -> {
+                                    dungeon();
+                                    haveKey = false;
+                                });
+
+                                leftButton.setOnAction(event5 -> {
+                                    dungeon();
+                                    haveKey = false;
+                                });
+                            });
+                        });
+
+                        leftButton.setOnAction(event3 -> {
+                            setLabel("I literally have no idea what a gauntlet is, I just hear people talk about it for games like this. Um you die? Feels bad");
+                            setRightButton("Im sorry");
+                            setLeftButton("This was literally made in one day");
+                        });
                     });
-
                 }
-                leftButton.setOnAction(event2 -> {
-                    dungeon();
-                });
+            });
+
+            leftButton.setOnAction(event2 -> {
+                dungeon();
             });
 
         });
